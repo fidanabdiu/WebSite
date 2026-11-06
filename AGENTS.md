@@ -1,224 +1,414 @@
-AGENTS.md — SoftDesign Website
+SOFT DESIGN — Project Development Instructions
 
-1. Project identity
+1. Project Overview
 
-Project: SoftDesign
-Website: https://softdesign-ks.com/
+SOFT DESIGN is an individually owned software development business registered in Kosovo.
 
-This repository contains the source code for the existing SoftDesign website.
+The business is operated by an experienced C# software developer with more than 15 years of professional experience.
 
-The website owner has more than 15 years of professional software development experience, primarily in C# and Microsoft technologies.
+The website represents an independent software engineering business, not a large software development agency.
 
-The objective is to maintain and continuously improve a professional, modern, reliable, and high-quality business website.
+The primary objective is to communicate professional experience, technical expertise, credibility, and software development services to potential international clients.
 
-The established SoftDesign business identity must be preserved.
+Primary expertise
 
-2. Technology stack
+- C#
+- Microsoft .NET
+- ASP.NET Core
+- Backend Development
+- Software Architecture
+- REST APIs and Integrations
+- Custom Software Development
+- Database Development
+- Application Maintenance
+- Legacy Application Modernization
 
-The existing website uses HTML, CSS, and JavaScript.
+Use verified information from the repository and the owner's supplied professional CV when relevant.
 
-Development principles:
+Never invent professional qualifications, certifications, customers, partnerships, projects, or achievements.
 
-- Prefer modern HTML5, CSS3, and vanilla JavaScript.
-- Use semantic and accessible HTML.
-- Write clean, modular, maintainable code.
-- Follow consistent naming conventions.
+Do not expose private CV information.
+
+2. Existing Technology Stack
+
+The website currently uses:
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+
+Hosting and deployment:
+
+- GitHub Pages
+- GoDaddy domain management
+
+Technology constraints
+
+Preserve the existing technology stack.
+
+Do not introduce React, Angular, Vue, Next.js, WordPress, or other frameworks without explicit approval.
+
+Do not introduce a backend, database, server-side rendering, or server infrastructure unless explicitly requested.
+
+Avoid unnecessary build tools, dependencies, and package management complexity.
+
+The website must remain compatible with static hosting through GitHub Pages.
+
+Preserve existing GitHub Pages configuration, domain-related configuration files, and deployment requirements.
+
+Do not modify domain or DNS configuration.
+
+3. Repository First
+
+Always inspect the existing repository before making changes.
+
+Understand:
+
+- Directory structure.
+- HTML pages.
+- CSS architecture.
+- JavaScript functionality.
+- Existing assets.
+- Navigation.
+- SEO metadata.
+- External integrations.
+- GitHub Pages configuration.
+- Existing coding conventions.
+
+Do not assume the repository structure or rewrite existing code without understanding its purpose.
+
+Preserve existing functionality unless changes are necessary and justified.
+
+4. Business Positioning
+
+Present SOFT DESIGN as an experienced, independent software engineering business.
+
+Emphasize:
+
+- More than 15 years of professional development experience.
+- Strong C# and .NET expertise.
+- Direct access to the owner and developer.
+- Professional software engineering.
+- Reliable and maintainable solutions.
+- Technical ownership.
+- Flexible cooperation.
+- Long-term business relationships.
+
+Avoid presenting the business as a large agency or implying the existence of employees or teams without verified information.
+
+Use authentic and specific business language.
+
+Never fabricate:
+
+- Client names.
+- Testimonials.
+- Certifications.
+- Partnerships.
+- Projects.
+- Business statistics.
+- Awards.
+- Team size.
+- Customer results.
+
+5. Coding Standards
+
+Write clean, maintainable, readable code.
+
+HTML
+
+- Use semantic HTML5.
+- Maintain a logical document structure.
+- Use accessible markup.
+- Avoid unnecessary nesting.
+- Include appropriate metadata.
+- Use descriptive attributes.
+
+CSS
+
+- Use consistent naming conventions.
+- Prefer reusable styles.
+- Maintain consistent spacing and typography.
+- Use CSS custom properties for shared design tokens.
+- Avoid unnecessary specificity.
+- Avoid duplicated declarations.
+- Organize styles logically.
+- Use responsive layouts.
+- Avoid excessive use of "!important".
+
+JavaScript
+
+- Prefer modern vanilla JavaScript.
+- Use "const" by default and "let" when reassignment is necessary.
+- Avoid unnecessary global variables.
+- Use modular and reusable functions.
+- Avoid duplicated logic.
+- Handle errors explicitly.
+- Avoid unsafe DOM manipulation.
 - Avoid unnecessary dependencies.
-- Avoid introducing frameworks without explicit approval.
-- Preserve the existing architecture where practical.
-- Maintain compatibility with modern browsers.
+- Keep scripts efficient and understandable.
 
-Do not introduce React, Angular, Vue, Next.js, or other frameworks without obtaining approval.
+Do not introduce TypeScript or a JavaScript framework without approval.
 
-3. Brand identity
+6. Design System and UX
 
-The existing SoftDesign logo and branding are part of the established business identity.
+Maintain a consistent premium B2B technology design.
 
-Mandatory rules:
+Principles:
 
-- Preserve existing logos.
-- Never redesign, replace, modify, or delete original logos.
-- Do not change the established brand identity without explicit approval.
-- Maintain consistency in existing brand colours and visual identity.
-- Preserve existing branding assets and references.
-- Ensure existing logos display correctly across desktop and mobile layouts.
-
-4. Design principles
-
-The website should communicate:
-
-- Professionalism.
-- Technical expertise.
-- Reliability.
-- Innovation.
-- Experience.
-- Trustworthiness.
-
-Design requirements:
-
-- Modern and elegant appearance.
-- Professional typography.
-- Consistent spacing and alignment.
-- Attractive and intuitive navigation.
+- Minimalist and professional.
+- Clear typography.
+- Consistent spacing.
+- Strong visual hierarchy.
+- Accessible contrast.
 - Responsive layouts.
-- Accessible interactive elements.
-- Subtle and purposeful animations.
-- Consistent design across all pages.
+- Subtle animations.
+- Consistent interaction patterns.
 
-Avoid generic templates, excessive visual effects, unnecessary animations, and cluttered layouts.
+Avoid:
 
-5. Content guidelines
+- Generic website templates.
+- Excessive gradients.
+- Unnecessary animations.
+- Visual clutter.
+- Excessive rounded cards.
+- Decorative elements without purpose.
+- Inconsistent design patterns.
 
-Use existing website content and approved documentation as the primary sources of truth.
+Use shared CSS variables and reusable components where appropriate.
 
-Use the owner's CV as background information when provided.
+All new sections and pages must follow the established design system.
 
-Content must be:
+7. Responsive Design
 
-- Accurate.
-- Professional.
-- Technically credible.
-- Clear and concise.
-- Consistent with the SoftDesign business identity.
+All website changes must support:
 
-Never invent services, projects, customers, certifications, qualifications, or professional achievements.
+- Desktop.
+- Laptop.
+- Tablet.
+- Mobile.
 
-Do not publish private CV information without explicit approval.
+Use responsive CSS and appropriate breakpoints.
 
-Do not automatically turn the business website into a personal portfolio.
+Ensure:
 
-6. Code quality and architecture
+- Navigation works on small screens.
+- Text remains readable.
+- Images scale correctly.
+- No horizontal overflow.
+- Interactive elements are usable.
+- Layouts maintain visual consistency.
 
-Before modifying files:
+Do not optimize exclusively for desktop.
 
-- Inspect the existing implementation.
-- Understand dependencies and functionality.
-- Identify potential side effects.
-- Check the current Git working tree.
+8. Accessibility
 
-When implementing changes:
+Follow WCAG 2.2 AA principles where practical.
 
-- Prefer incremental improvements.
-- Preserve existing functionality.
-- Avoid unnecessary rewrites.
-- Reuse existing components and styles where appropriate.
-- Remove obsolete code only when justified.
-- Keep CSS organised.
-- Avoid duplicated styles and JavaScript.
-- Handle errors appropriately.
-- Avoid hardcoded secrets and credentials.
-
-7. Responsive design
-
-Every page must work properly on:
-
-- Large desktop screens.
-- Standard desktop screens.
-- Laptops.
-- Tablets.
-- Mobile phones.
-
-Pay particular attention to navigation, typography, images, spacing, and interactive elements.
-
-Responsive layouts should be deliberately designed rather than simply shrinking desktop layouts.
-
-8. SEO, accessibility, and performance
-
-Follow modern best practices for:
+Requirements:
 
 - Semantic HTML.
-- Heading hierarchy.
-- Page titles and descriptions.
-- Open Graph metadata.
-- Image alternative text.
 - Keyboard navigation.
-- Colour contrast.
-- Accessible forms.
-- Image optimisation.
-- Loading performance.
-- Core Web Vitals.
+- Visible focus states.
+- Proper form labels.
+- Appropriate color contrast.
+- Descriptive link text.
+- Accessible navigation.
+- Screen reader compatibility.
+- Reduced-motion support.
+
+Do not rely exclusively on color to communicate information.
+
+9. SEO Standards
+
+Every public page should have:
+
+- Unique page title.
+- Unique meta description.
+- One primary H1.
+- Logical heading hierarchy.
+- Canonical URL where appropriate.
+- Open Graph metadata.
+- Descriptive image alt attributes.
+- Relevant internal links.
+
+Maintain:
+
+- XML sitemap.
+- Robots.txt.
 - Structured data where appropriate.
+- SEO-friendly URLs compatible with GitHub Pages.
 
-Do not introduce misleading SEO content or keyword stuffing.
+Use accurate domain configuration discovered from the repository.
 
-9. Testing requirements
+Avoid keyword stuffing, duplicate content, and misleading metadata.
 
-After implementing changes, perform appropriate validation:
+10. Performance
 
-- HTML validation.
-- CSS review.
-- JavaScript checks.
-- Link verification.
-- Responsive layout checks.
-- Browser compatibility checks.
-- Accessibility checks.
-- SEO metadata checks.
-- Performance checks.
+Prioritize:
 
-Use available automated tools where practical.
+- Fast loading.
+- Optimized images.
+- Efficient CSS.
+- Lightweight JavaScript.
+- Minimal external dependencies.
+- Appropriate caching.
+- Efficient font loading.
+- Core Web Vitals.
 
-Only report tests that were actually executed.
+Use lazy loading for appropriate non-critical images.
 
-10. Git and repository protection
+Do not lazy-load critical above-the-fold content unnecessarily.
 
-This is an existing website and must be treated carefully.
+Measure actual performance whenever tools are available.
 
-Mandatory rules:
+Never invent performance metrics.
 
-- Work only within the opened repository.
-- Never overwrite or delete original logos.
-- Never delete important files without approval.
-- Never discard existing user changes.
-- Never perform destructive Git operations.
-- Never commit without explicit approval.
-- Never push to remote repositories without explicit approval.
-- Never deploy without explicit approval.
-- Never commit private CV documents.
-- Never expose credentials or secrets.
-- Never modify production configuration unnecessarily.
+11. Contact Forms and External Services
 
-Use a dedicated development branch for redesign work.
+The website is hosted on GitHub Pages.
 
-Always inspect git status before making modifications.
+GitHub Pages does not provide server-side form processing.
 
-11. Collaboration and approval
+Never implement a contact form that only displays a fake success message.
 
-Work collaboratively with an experienced software developer.
+Before integrating a third-party service:
 
-Explain significant technical and design decisions.
+1. Explain why it is required.
+2. Identify suitable providers.
+3. Explain costs and limitations.
+4. Obtain approval before introducing paid services or external account dependencies.
 
-Ask for approval before:
+Never expose API keys, SMTP credentials, or private tokens in client-side JavaScript.
 
-- Major architectural changes.
-- Framework or technology changes.
-- Significant design changes affecting brand identity.
-- Removing existing functionality.
-- Introducing paid services or dependencies.
-- Publishing personal information.
+Provide meaningful validation and error handling.
 
-For larger tasks, use this workflow:
+If no working submission mechanism exists, use a clearly presented alternative such as direct email contact.
 
-1. Analyse.
-2. Propose.
-3. Obtain approval.
-4. Implement.
-5. Test.
-6. Report.
+12. Security and Privacy
 
-Do not begin major implementation before approval.
+- Never commit secrets.
+- Never expose credentials.
+- Never collect unnecessary personal information.
+- Validate user input.
+- Avoid unsafe HTML injection.
+- Avoid unnecessary third-party scripts.
+- Use secure external links.
+- Consider privacy implications of analytics and tracking.
+- Follow appropriate security practices for external integrations.
 
-12. Definition of quality
+13. Browser Compatibility
 
-Every change should contribute to a website that is:
+Support current versions of major browsers:
 
-- Professionally designed.
-- Technically sound.
-- Visually consistent.
-- Responsive.
-- Accessible.
-- Search-engine friendly.
-- Fast.
-- Maintainable.
-- Consistent with the SoftDesign identity.
+- Google Chrome.
+- Microsoft Edge.
+- Mozilla Firefox.
+- Safari.
 
-Prioritise quality, accuracy, and maintainability over unnecessary complexity.
+Use progressive enhancement where appropriate.
+
+Avoid relying on experimental browser features without a suitable fallback.
+
+14. Testing and Quality Assurance
+
+Before completing a task:
+
+- Validate HTML where possible.
+- Check CSS for errors.
+- Check JavaScript for errors.
+- Verify all internal links.
+- Verify external links where practical.
+- Test navigation.
+- Test contact interactions.
+- Review mobile layouts.
+- Check browser console errors.
+- Check accessibility.
+- Review SEO metadata.
+- Test the static website locally.
+
+Run available project checks and report actual results.
+
+Never claim tests passed if they were not executed.
+
+15. Git Workflow — Strict Rules
+
+The owner works directly with the local repository.
+
+All AI agents must follow these rules:
+
+- Work directly in the current local repository.
+- Do not create branches.
+- Do not create worktrees.
+- Do not commit changes.
+- Do not push changes.
+- Do not deploy changes.
+- Do not modify Git remotes.
+- Do not rewrite Git history.
+- Do not discard uncommitted changes.
+- Do not reset the repository.
+- Do not run destructive Git commands.
+
+The owner reviews all changes locally.
+
+Git commits and pushes are permitted only after explicit instructions from the owner.
+
+Implementation tasks do not automatically authorize Git operations.
+
+16. Change Management
+
+Keep changes focused and relevant to the requested task.
+
+Before editing:
+
+- Understand the affected files.
+- Identify dependencies.
+- Consider potential regressions.
+- Preserve unrelated work.
+
+After editing:
+
+- Review the changes.
+- Remove temporary code.
+- Remove unused assets introduced by the implementation.
+- Check for accidental modifications.
+- Report important architectural changes.
+
+Do not perform unrelated refactoring without justification.
+
+17. Documentation
+
+Update documentation when introducing:
+
+- New functionality.
+- New dependencies.
+- New external integrations.
+- New configuration requirements.
+- New development workflows.
+- Important architectural decisions.
+
+Keep documentation accurate and concise.
+
+18. Definition of Done
+
+A task is complete when:
+
+1. Requested functionality is implemented.
+2. Existing functionality remains intact.
+3. Code follows project conventions.
+4. Responsive behavior is verified.
+5. Accessibility has been considered.
+6. SEO requirements are maintained.
+7. No known critical security issues are introduced.
+8. Relevant tests and checks are executed.
+9. Documentation is updated where necessary.
+10. Remaining limitations are clearly documented.
+
+Always provide a concise completion report describing:
+
+- Files modified.
+- Features implemented.
+- Important decisions.
+- Tests performed.
+- Outstanding issues.
+
+Do not commit, push, or deploy changes unless explicitly instructed by the owner.

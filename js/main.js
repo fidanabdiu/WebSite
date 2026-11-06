@@ -32,13 +32,3 @@ if (menuToggle && primaryMenu) {
 
 const year = document.querySelector('#currentYear');
 if (year) year.textContent = String(new Date().getFullYear());
-
-const contactForm = document.querySelector('#contactForm');
-const formStatus = document.querySelector('#formStatus');
-
-if (contactForm && formStatus) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    formStatus.textContent = 'Message delivery is not configured yet. Your message has not been sent.';
-  });
-}

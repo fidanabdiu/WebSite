@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 148" role="img" aria-labelledby="title desc">
+  <title id="title">SOFT DESIGN</title>
+  <desc id="desc">Screen and code mark above the SOFT DESIGN wordmark.</desc>
+  <g fill="none" stroke="#285D4C" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="116" y="8" width="68" height="56" rx="3" stroke-width="3"/>
+    <path d="m139 28-9 8 9 8m23-16 9 8-9 8m-8-18-8 20" stroke-width="3.5"/>
+    <path d="M150 64v9m-17 4h34" stroke-width="3"/>
+  </g>
+  <text x="150" y="128" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="31" letter-spacing="2.1">
+    <tspan fill="#183A32" font-weight="600">SOFT </tspan><tspan fill="#285D4C" font-weight="500">DESIGN</tspan>
+  </text>
+</svg>

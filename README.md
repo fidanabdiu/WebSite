@@ -1,132 +1,80 @@
 # SOFT DESIGN website
 
-A lightweight, single-page website for SOFT DESIGN, Fidan Abdiu's individual software development business in Pristina, Kosovo. The homepage leads with “Welcome to SOFT DESIGN. C#/.NET software development services.” and presents Services, Technical Expertise, Selected Experience, About, Working Approach and Contact sections.
+The SOFT DESIGN website is a single-page business site for Fidan Abdiu's independent software development practice in Pristina, Kosovo. It describes C#/.NET services, selected experience, working approach and contact details.
 
-## Technology
+## Technology and behavior
 
-- HTML5
-- CSS3
-- Vanilla JavaScript (ES6+)
-- Static hosting on GitHub Pages; no backend, framework, package manager or build step
+- Semantic HTML, CSS and dependency-free vanilla JavaScript.
+- Static files served directly by GitHub Pages; no package manager, build step, server application or framework.
+- The page and navigation remain available without JavaScript. JavaScript enhances the small-screen navigation and updates the footer year.
+- Homepage resources use relative paths so they work from the site root and a repository subpath. The 404 page leaves paths relative for `file://` use, then sets a site base on HTTP(S) so its assets resolve from a nested missing URL on the custom domain or current `/WebSite/` GitHub Pages project path. Canonical and discovery metadata intentionally name the configured custom domain.
 
-The page works without JavaScript. JavaScript only improves the small-screen navigation and copyright year.
-
-## Project files
+## Repository layout
 
 ```text
 .
-├── AGENTS.md
+├── index.html                  # Homepage, metadata, structured data and page content
+├── 404.html                    # GitHub Pages not-found page
+├── CNAME                       # www.softdesign-ks.com
+├── robots.txt                  # Crawler rules and sitemap location
+├── sitemap.xml                 # Public canonical homepage URL
 ├── README.md
-├── index.html
-├── 404.html
-├── CNAME
-├── robots.txt
-├── sitemap.xml
-├── site.webmanifest
-├── assets/
-│   ├── documents/
-│   ├── icons/
-│   ├── images/
-│   └── logos/
+├── AGENTS.md                   # Contributor and coding-agent instructions
 ├── css/
-│   ├── responsive.css
-│   └── styles.css
-└── js/
-    └── main.js
+│   ├── styles.css              # Tokens, shared components and base layouts
+│   └── responsive.css          # Tablet and mobile rules
+├── js/
+│   └── main.js                 # Progressive navigation and year enhancements
+└── assets/
+    ├── icons/                  # Social and touch icon
+    ├── images/                 # Optimized profile portrait
+    └── logos/                  # Supplied SOFT DESIGN SVG marks and wordmarks
 ```
 
-The original supplied logo files under `logos/`, profile photo `fidan_abdiu_linkedin_profile_image.png`, and CV source `fidan_abdiu_resume.txt` are retained as source materials. Optimized copies used by the website are in `assets/`.
+There are no GitHub Actions workflow files, `package.json`, `.gitignore`, test suite, source portrait, CV source or CV PDF in the current repository. The site does not currently link to a CV file; visitors can request it by email.
 
 ## Run locally
 
-The site uses relative local assets and can be opened directly by opening `index.html` in a browser. To check it over HTTP, use any static file server, for example Python's built-in server if Python is installed:
+Serve the repository root over HTTP. With Python 3.7 or newer installed:
 
-```text
+```powershell
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000/`. No package install or compilation is needed.
+Then open <http://localhost:8000/>. Stop the server with `Ctrl+C`. Any static file server that serves this directory without rewriting paths will work. Opening `index.html` directly is not a substitute for checking HTTP behavior; browsers may restrict requests from `file://` pages.
 
-## Updating content
+To simulate a repository project URL, stop the root server and restart it with the repository's parent as its document root:
 
-- Edit visible page copy and section structure in `index.html`.
-- Keep the English heading order, semantic sections and concise editorial tone.
-- Update the title, description, canonical URL, Open Graph/Twitter values and JSON-LD in the `<head>` when the public identity or domain changes.
-- Update `sitemap.xml` and `robots.txt` if the canonical host changes.
-- Keep project descriptions limited to verified CV or user-provided details. Generalize confidential projects and never add invented outcomes or metrics.
-- The footer year updates from `js/main.js`; its 2026 fallback in HTML is available if JavaScript is disabled.
-
-### Current page presentation
-
-- The hero and Services sections have distinct full-width neutral backgrounds.
-- The profile portrait appears as a smaller circular image in both the hero and About sections. The hero caption is centered below the photo; the About photo has no caption.
-- The Selected Experience entries identify Kosovo Agency of Statistics, Vodafone Albania, FOM University and Banka Ekonomike. Keep these labels and descriptions consistent with the supplied CV and any confidentiality requirements.
-- The footer's lower row contains only the copyright year and the “Back to top” link.
-
-## Replacing the profile picture
-
-1. Place the approved source in `assets/images/`.
-2. Create a web-sized derivative (the current image is a 720 px wide JPEG) and preserve the source separately.
-3. Update the image paths in `index.html`, keeping intrinsic `width` and `height`, descriptive alt text, and lazy loading for the below-fold portrait.
-4. Keep the hero portrait eager-loaded so it can render promptly.
-
-Current image: `assets/images/fidan-abdiu-profile.jpg`, a 720 px wide JPEG derivative of the supplied portrait.
-
-## Replacing the logo
-
-Use the supplied official SVGs in `assets/logos/`. The dark wordmark is used on light surfaces; the light wordmark is used in the footer. Preserve the SVG viewBox and proportions. Update `index.html` and `404.html` references if filenames change. Use the symbol mark for the favicon.
-
-## Updating the CV
-
-The current supplied `fidan_abdiu_resume.txt` contains LaTeX source, not a ready-to-publish PDF. There is no CV PDF in the project. Add the approved public PDF at:
-
-```text
-assets/documents/fidan-abdiu-cv.pdf
+```powershell
+python -m http.server 8000 --directory ..
 ```
 
-After adding it, change the two “Request my CV” links in `index.html` from the mailto request to a direct download link such as:
+Then open `http://localhost:8000/WebSite/` (the current GitHub repository is named `WebSite`). The homepage's local resource URLs are relative to the page. Canonical, social, JSON-LD, robots and sitemap URLs stay on `https://www.softdesign-ks.com/` by design; update those together only if the public domain changes.
 
-```html
-<a href="assets/documents/fidan-abdiu-cv.pdf" download>Download my CV</a>
-```
+## Verify changes
 
-Check the PDF opens and downloads after deployment. Until then, the site invites visitors to request the CV by email and does not expose the LaTeX source.
-
-## Adding case studies
-
-Add one `<article class="case-row">` in the selected experience list in `index.html`. Use the same metadata and description structure. Include only approved facts: industry/context, engineering challenge, your contribution and verified outcome where available. Anonymize clients when details are confidential. Do not invent metrics, endorsements or results.
-
-## SEO metadata
-
-Edit the title, description, canonical, Open Graph and Twitter tags in `index.html`. The current title targets C#/.NET development services in Kosovo; keep social titles and descriptions aligned with the visible “Welcome to SOFT DESIGN. C#/.NET software development services.” hero message. Keep the canonical URL consistent with the active domain in `CNAME`, `sitemap.xml`, and `robots.txt`. JSON-LD is in the `application/ld+json` block; update only with verified information and valid JSON. Keep image alt text descriptive and heading order logical.
+There is no permanent test framework. For a site-wide change, check the HTML and JSON-LD, parse `sitemap.xml`, check local references and fragment links, and serve the site over HTTP. In a browser, inspect desktop and mobile widths, keyboard navigation, the mobile menu, the 404 page and the console/network panel. Do not report checks that were not run. No package installation is needed.
 
 ## GitHub Pages deployment
 
-1. Push the static site files to the GitHub repository. Keep `index.html`, `404.html`, `CNAME`, and the other root configuration files at the published root.
-2. In the repository's **Settings → Pages**, select the intended branch and root folder (or the existing publishing source if one is already configured). Do not replace an existing workflow or deployment setting without reviewing it.
-3. Keep the custom domain set to `www.softdesign-ks.com`. The repository `CNAME` file contains that hostname.
-4. Confirm that the Pages deployment succeeds and that the domain resolves to the repository's GitHub Pages site. This project does not change DNS or GoDaddy configuration.
-5. In GitHub Pages settings, enable **Enforce HTTPS** when GitHub indicates the certificate is ready.
-6. Open `https://www.softdesign-ks.com/`, test the navigation and contact links on desktop and mobile, request a missing path to verify `404.html`, and check the browser console for errors.
+The publishing layout is the repository root: `index.html`, `404.html`, `CNAME`, and the static resources are all at the expected locations. To deploy, push the intended branch and check **Settings → Pages** for the repository's configured publishing source. The repository contains no custom Actions workflow; the notification alone does not identify why a Pages run failed. Inspect the failed run's logs and Pages settings in GitHub to diagnose an external startup failure.
 
-### GoDaddy domain and HTTPS
+The `CNAME` file specifies `www.softdesign-ks.com`. Keep it and the custom-domain metadata unless the domain is intentionally changed. Do not modify DNS, nameservers, repository settings or deployment configuration as part of local site edits. GitHub Pages UI, DNS resolution, certificate status and workflow logs cannot be verified from this checkout.
 
-The existing custom domain is `www.softdesign-ks.com`. The `CNAME` file records the hostname for GitHub Pages; it does not modify GoDaddy DNS. Preserve existing DNS records and do not change nameservers based on this README. If Pages reports a DNS or certificate problem, inspect the current GitHub Pages and GoDaddy configuration before making changes.
+For a repository-based URL such as `https://OWNER.github.io/WebSite/`, keep homepage resources relative to the document. The 404 page sets `/WebSite/` as its base on GitHub Pages project URLs because Pages serves it at the missing request URL. If the repository name changes, update this base path in `404.html`. If changing the public deployment URL, update the canonical URL, Open Graph and JSON-LD values, `robots.txt`, and `sitemap.xml` as appropriate. The 404 page's home link returns to the configured custom domain.
 
-GitHub Pages provisions and renews an HTTPS certificate after its custom-domain and DNS checks pass. HTTPS cannot be enabled until that process is complete. Keep the canonical URL, social URLs and sitemap on HTTPS.
+## Content and asset conventions
 
-## Deployment validation checklist
+- Edit page copy and structured data in `index.html`; keep structured data factual and consistent with visible content.
+- Keep shared styles and design tokens in `css/styles.css`; put responsive breakpoint rules in `css/responsive.css`.
+- Keep JavaScript small, dependency-free and optional for core content and navigation.
+- Preserve the supplied artwork in `assets/logos/`; use dark wordmarks on light surfaces and the light wordmark in the footer.
+- `assets/images/fidan-abdiu-profile.jpg` is the current web portrait. Provide intrinsic dimensions, eager-load the hero image and lazy-load the below-fold portrait.
+- Do not add unverified clients, outcomes, credentials, availability or contact details. Generalize confidential project information.
+- If an approved public CV PDF is later supplied, place it at `assets/documents/fidan-abdiu-cv.pdf` (create the directory then) and update the request links deliberately. Do not publish LaTeX or other private source material.
 
-- Root page loads over HTTPS and canonical URL points to `https://www.softdesign-ks.com/`.
-- Logo, favicon, profile image and CSS load successfully.
-- Navigation links reach the intended sections; keyboard focus and mobile menu work.
-- Email, telephone, LinkedIn and GitHub links open correctly.
-- Current CV PDF is added and downloadable once supplied.
-- `robots.txt`, `sitemap.xml`, `site.webmanifest` and `404.html` are served from the site root.
-- JSON-LD parses and matches visible facts; check for browser console errors.
-- Review desktop, tablet and phone widths for readable text and no horizontal overflow.
+## Known limits
 
-## Content and asset still needed
-
-- **CV PDF:** add the approved file as `assets/documents/fidan-abdiu-cv.pdf` to enable a direct download. Current website CTAs request it by email.
-- The original site could not be retrieved with the available browser/web tools during setup. Current copy and project descriptions therefore use the supplied CV and user-provided brief; review against any additional approved public information before launch.
+- The site has no backend, contact form, analytics, service worker or automated test suite.
+- There is no CV PDF in the repository.
+- This checkout cannot establish the cause of a GitHub Actions notification or validate the live Pages configuration; use the GitHub run logs and Pages settings for those checks.

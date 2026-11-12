@@ -2,61 +2,53 @@
 
 ## Project overview
 
-This repository is the static, single-page English website for Fidan Abdiu's independent software development practice, SOFT DESIGN, based in Pristina, Kosovo. It is published from the repository root through GitHub Pages. Keep the existing editorial design and factual business content intact.
+This repository contains a static multi-page site for Fidan Abdiu's independent C#/.NET software engineering practice in Pristina, Kosovo. GitHub Pages publishes the repository root. Preserve direct, factual positioning and keep all changes compatible with static hosting.
 
 ## Technology constraints
 
-- Use semantic HTML5, CSS3 and vanilla JavaScript only.
-- Do not introduce a framework, TypeScript, dependencies, package manager, build step, backend or external scripts.
-- Keep visible content and core navigation usable with JavaScript disabled. JavaScript is progressive enhancement only.
-- Preserve the supplied logo artwork and the current local asset set. Do not invent missing source files.
+- Use semantic HTML5, CSS3 and vanilla JavaScript only. Do not add frameworks, dependencies, package managers, build steps, backends or third-party scripts.
+- Keep content and core navigation available without JavaScript; scripts only enhance navigation, footer year and the email-draft form.
+- There is no backend or configured form provider. The project inquiry form validates in the browser and opens a prefilled email draft; do not display submission success or claim messages were delivered.
+- Preserve supplied logo artwork and portrait. Do not invent assets, client details, outcomes, credentials, availability, prices or guarantees.
 
 ## Important files
 
-- `index.html`: homepage content, SEO metadata and JSON-LD.
-- `404.html`: GitHub Pages not-found page.
-- `css/styles.css`: design tokens, shared rules and base layouts.
-- `css/responsive.css`: tablet and mobile adaptations.
-- `js/main.js`: mobile navigation and copyright year enhancements.
-- `assets/logos/`, `assets/images/`, `assets/icons/`: supplied display assets.
-- `robots.txt`, `sitemap.xml`, `CNAME`: static hosting and discovery configuration.
-- `README.md`: setup, repository layout and deployment guidance.
+- `index.html`: homepage, metadata, JSON-LD and project inquiry form.
+- `services/*.html`: six standalone service pages with unique metadata and canonical URLs.
+- `404.html`: not-found page and path handling for direct-file, custom-domain and current GitHub project URLs.
+- `css/styles.css`: design tokens, shared components and page layouts.
+- `css/responsive.css`: tablet and mobile breakpoint rules.
+- `js/main.js`: mobile navigation, copyright year and mailto draft enhancement.
+- `assets/logos/`, `assets/images/`, `assets/icons/`: supplied branding and imagery.
+- `robots.txt`, `sitemap.xml`, `CNAME`: crawler and GitHub Pages configuration.
+- `docs/`: architecture, design system, SEO and development/testing documentation.
 
-## Editing conventions
+## Content and HTML
 
-### HTML and content
+- Use one descriptive `<h1>` per page, logical heading order, landmarks, accessible labels, keyboard-operable controls and descriptive image alternatives.
+- Keep each service page's title, description, canonical, Open Graph copy, JSON-LD and sitemap URL unique and aligned.
+- Base professional claims on the existing site, CV or user-provided facts. Do not imply sole responsibility for collaborative projects; disclose that experience summaries are generalized.
+- CV requests remain email requests unless an approved public PDF is added.
+- Keep project form behavior honest: browser validation, email draft and manual sending. No success message may imply a server accepted the inquiry.
 
-- Keep one descriptive `<h1>`, logical heading order, landmarks, accessible link names and correct control semantics.
-- Preserve `lang="en"`, viewport metadata, canonical and social metadata, and icon references.
-- Keep JSON-LD valid and aligned with visible, verified details. Do not add invented clients, metrics, testimonials, credentials, dates, guarantees or contact information. Generalize confidential project details.
-- Use descriptive alt text for meaningful portraits and empty alt text for decorative images.
-- Keep the CV request links as email requests while no approved public PDF exists. Never link private source material.
+## Design and CSS
 
-### CSS
+- Follow `docs/design-system.md`: modern technical identity using navy, purple/violet, lavender, off-white and neutral gray. Microsoft .NET is a visual reference only; do not imply affiliation or copy proprietary art.
+- Use local system sans-serif and monospace stacks. Do not request remote fonts or use stock coding images.
+- Keep shared tokens and component rules in `styles.css`; keep viewport overrides in `responsive.css`.
+- Preserve visible focus, readable contrast, responsive layouts and reduced-motion support. Avoid adding motion or decorative gradients beyond the restrained existing treatment.
+- Keep local resource paths relative. Preserve the 404 base-path handling and update it if the repository name or public domain changes.
 
-- Keep shared tokens and desktop/component rules in `styles.css`; keep responsive breakpoint rules in `responsive.css`.
-- Reuse the existing custom properties and `.section-shell` convention. Preserve the warm paper and evergreen editorial identity.
-- Keep visible focus indicators, readable contrast and usable small-screen layouts. Respect `prefers-reduced-motion`.
-- Avoid inline styles, unnecessary duplication, decorative motion and broad visual rewrites.
+## GitHub Pages and URLs
 
-### JavaScript
-
-- Keep scripts small, dependency-free and isolated. Guard DOM access and do not make content depend on script execution.
-- Keep the navigation button's `aria-expanded` state synchronized with its menu; support Escape and closing after an in-page link is chosen.
-- Use semantic controls and avoid inline event handlers or unnecessary listeners.
-
-## GitHub Pages and paths
-
-- Publish the repository root, with `index.html` and `404.html` at root. Do not add server-side assumptions.
-- Use relative paths for local HTML resources. Keep homepage resources compatible with repository subpaths and direct file opening. Preserve the 404 page's base-path logic: it leaves relative URLs intact on `file://`, and resolves assets from `/` on the custom domain or `/WebSite/` on GitHub Pages project URLs. Update the project base if the repository name changes.
-- The configured public host is `https://www.softdesign-ks.com/`; `CNAME`, canonical/social/JSON-LD metadata, `robots.txt` and `sitemap.xml` must agree. Update them together only when the public domain changes.
-- The 404 page returns visitors to the configured canonical custom domain.
-- Do not change DNS, GitHub Pages settings, deployment branch or workflow configuration without an explicit user request. No custom Actions workflow is present in this repository; diagnose failed runs from GitHub logs/settings rather than guessing.
-- Preserve case-sensitive paths and supplied files. Do not add a workflow, build process or dependency without explicit direction.
+- Publish from the repository root. Keep `index.html`, `404.html`, `CNAME`, `robots.txt` and `sitemap.xml` at root.
+- The canonical host is `https://www.softdesign-ks.com/`. Keep CNAME, canonical/social/JSON-LD URLs, robots and sitemap aligned if the public host changes.
+- `index.html` and service pages use relative resource paths so they work at the root and under `/WebSite/`. The 404 page uses its small base-path script to resolve its relative assets for `file://`, the custom domain and the current `github.io/WebSite/` project URL.
+- Do not change DNS, GitHub Pages settings, deployment branch or remote repository configuration without an explicit user request. No custom workflow is stored here; diagnose GitHub-managed build failures from their logs, not guesses.
 
 ## Verification and documentation
 
-- For broad changes, check HTML structure, unique IDs and fragment links, local resource references, JSON-LD and sitemap XML.
-- Serve the site over HTTP and check resources at the root and a repository subpath where practical. Inspect desktop/mobile layouts, keyboard behavior, browser console and network requests when browser tools are available.
-- Report only checks actually performed. Do not claim external Pages, DNS, certificate or deployment validation without access to those systems.
-- Do not add a permanent test framework for routine changes. Keep `README.md` and these instructions synchronized with the files that exist and how they are actually served.
+- There is no build, test runner, linter or type checker. Do not add them for routine changes.
+- For broad edits, check HTML structure, IDs/fragments, all local paths, page metadata, JSON-LD, sitemap XML, mobile-menu behavior and form validation/draft wording.
+- Serve over HTTP; inspect desktop/tablet/mobile, keyboard behavior and browser console when tools are available. Report limitations accurately and do not claim an external deployment test without doing one.
+- Keep README and the relevant `docs/` guides synchronized with the implementation. Update these instructions when technology, paths or deployment conventions change.

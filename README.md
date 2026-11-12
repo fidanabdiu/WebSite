@@ -1,80 +1,98 @@
 # SOFT DESIGN website
 
-The SOFT DESIGN website is a single-page business site for Fidan Abdiu's independent software development practice in Pristina, Kosovo. It describes C#/.NET services, selected experience, working approach and contact details.
+SOFT DESIGN is Fidan Abdiu's independent software engineering practice in Pristina, Kosovo. This static website presents C#/.NET services, technical expertise, selected professional experience, ways of working and direct contact options. The positioning emphasizes experienced, direct engineering for business and enterprise software; it does not represent a staffed agency.
 
-## Technology and behavior
+## Technology and features
 
-- Semantic HTML, CSS and dependency-free vanilla JavaScript.
-- Static files served directly by GitHub Pages; no package manager, build step, server application or framework.
-- The page and navigation remain available without JavaScript. JavaScript enhances the small-screen navigation and updates the footer year.
-- Homepage resources use relative paths so they work from the site root and a repository subpath. The 404 page leaves paths relative for `file://` use, then sets a site base on HTTP(S) so its assets resolve from a nested missing URL on the custom domain or current `/WebSite/` GitHub Pages project path. Canonical and discovery metadata intentionally name the configured custom domain.
+- Semantic HTML5, CSS3 and dependency-free vanilla JavaScript.
+- Static files published from the repository root through GitHub Pages. No framework, package manager, build step, backend, analytics, service worker or external runtime dependency is used.
+- A responsive homepage plus six standalone service pages, a root-level 404 page, local SVG branding and a supplied profile portrait.
+- The mobile navigation, footer year and project inquiry email-draft behavior are progressive enhancements. The core content and links remain available without JavaScript.
+- The project form uses native required-field and email validation, then opens a prefilled email draft. It does not send data to a server; the visitor must review and send the draft in their email app.
 
-## Repository layout
+## Pages
+
+- `index.html` — homepage, service overview, expertise, selected experience, about, approach and contact.
+- `services/custom-dotnet-development.html` — custom business applications.
+- `services/aspnet-core-api-development.html` — backend, REST APIs and integrations.
+- `services/legacy-dotnet-modernization.html` — modernization and refactoring of existing systems.
+- `services/sql-server-database-development.html` — SQL Server, MariaDB and .NET data access.
+- `services/enterprise-software-maintenance.html` — maintenance and ongoing engineering support.
+- `services/dotnet-development-outsourcing.html` — direct independent .NET collaboration; no fixed package or availability claim.
+- `404.html` — GitHub Pages not-found page.
+
+## Repository structure
 
 ```text
 .
-├── index.html                  # Homepage, metadata, structured data and page content
-├── 404.html                    # GitHub Pages not-found page
-├── CNAME                       # www.softdesign-ks.com
-├── robots.txt                  # Crawler rules and sitemap location
-├── sitemap.xml                 # Public canonical homepage URL
+├── index.html
+├── 404.html
+├── CNAME
+├── robots.txt
+├── sitemap.xml
 ├── README.md
-├── AGENTS.md                   # Contributor and coding-agent instructions
+├── AGENTS.md
 ├── css/
-│   ├── styles.css              # Tokens, shared components and base layouts
-│   └── responsive.css          # Tablet and mobile rules
+│   ├── styles.css
+│   └── responsive.css
 ├── js/
-│   └── main.js                 # Progressive navigation and year enhancements
-└── assets/
-    ├── icons/                  # Social and touch icon
-    ├── images/                 # Optimized profile portrait
-    └── logos/                  # Supplied SOFT DESIGN SVG marks and wordmarks
+│   └── main.js
+├── services/
+│   └── six standalone service pages
+├── assets/
+│   ├── icons/
+│   ├── images/
+│   └── logos/
+└── docs/
+    ├── architecture.md
+    ├── design-system.md
+    ├── development-testing.md
+    └── seo.md
 ```
 
-There are no GitHub Actions workflow files, `package.json`, `.gitignore`, test suite, source portrait, CV source or CV PDF in the current repository. The site does not currently link to a CV file; visitors can request it by email.
+The supplied web portrait is `assets/images/fidan-abdiu-profile.jpg`. The current logo SVGs and social icon are in `assets/logos/` and `assets/icons/`. No source portrait, CV source, public CV PDF, application screenshots, `.gitignore`, package manifest, test suite, lint configuration, type-check configuration, or custom GitHub Actions workflow is present. CV links therefore open an email request.
 
-## Run locally
+## Local setup
 
-Serve the repository root over HTTP. With Python 3.7 or newer installed:
+No installation is required. With Python 3.7 or newer, start a static server from the repository root:
 
 ```powershell
 python -m http.server 8000
 ```
 
-Then open <http://localhost:8000/>. Stop the server with `Ctrl+C`. Any static file server that serves this directory without rewriting paths will work. Opening `index.html` directly is not a substitute for checking HTTP behavior; browsers may restrict requests from `file://` pages.
-
-To simulate a repository project URL, stop the root server and restart it with the repository's parent as its document root:
+Open <http://localhost:8000/> and stop the server with `Ctrl+C`. To simulate the repository project prefix, stop the first server and serve the repository's parent directory:
 
 ```powershell
 python -m http.server 8000 --directory ..
 ```
 
-Then open `http://localhost:8000/WebSite/` (the current GitHub repository is named `WebSite`). The homepage's local resource URLs are relative to the page. Canonical, social, JSON-LD, robots and sitemap URLs stay on `https://www.softdesign-ks.com/` by design; update those together only if the public domain changes.
+Then open <http://localhost:8000/WebSite/>. Homepage and service page resource URLs are relative, so they resolve from the site root and under `/WebSite/`. `404.html` sets its base to `/` on the custom domain and `/WebSite/` on a `github.io` host; when opened as `file://`, it leaves relative paths intact. If the repository is renamed, update its `/WebSite/` base in `404.html`.
 
-## Verify changes
+Opening a page directly from disk can be useful for visual checks, but use HTTP for the full path and hosting check. `index.html` has no manifest or network-loaded resources. The contact form's mailto behavior depends on the visitor's configured email application.
 
-There is no permanent test framework. For a site-wide change, check the HTML and JSON-LD, parse `sitemap.xml`, check local references and fragment links, and serve the site over HTTP. In a browser, inspect desktop and mobile widths, keyboard navigation, the mobile menu, the 404 page and the console/network panel. Do not report checks that were not run. No package installation is needed.
+## Build, tests and configuration
+
+There is no build command, test runner, linter, type checker, package install, environment variable, secret or server-side configuration. The deployed site is the checked-in static files. For the available manual validation steps, see [Development and testing](docs/development-testing.md).
+
+## Documentation
+
+- [Architecture](docs/architecture.md) describes the pages, routes, shared markup and behavior.
+- [Design system](docs/design-system.md) records the palette, type, layout, components and breakpoints.
+- [SEO](docs/seo.md) documents metadata, structured data, sitemap and URL conventions.
+- [Development and testing](docs/development-testing.md) covers local serving, updates and verification.
+- [AGENTS.md](AGENTS.md) contains concise instructions for future coding agents.
 
 ## GitHub Pages deployment
 
-The publishing layout is the repository root: `index.html`, `404.html`, `CNAME`, and the static resources are all at the expected locations. To deploy, push the intended branch and check **Settings → Pages** for the repository's configured publishing source. The repository contains no custom Actions workflow; the notification alone does not identify why a Pages run failed. Inspect the failed run's logs and Pages settings in GitHub to diagnose an external startup failure.
+The publishing source is the repository root: `index.html`, `404.html`, and `CNAME` must remain there. The `CNAME` file contains `www.softdesign-ks.com`. Check **Settings → Pages** for the configured publishing source and inspect the GitHub Actions run logs if a Pages build fails. No workflow file is maintained in this repository, so a local audit cannot explain a GitHub-managed Pages startup failure.
 
-The `CNAME` file specifies `www.softdesign-ks.com`. Keep it and the custom-domain metadata unless the domain is intentionally changed. Do not modify DNS, nameservers, repository settings or deployment configuration as part of local site edits. GitHub Pages UI, DNS resolution, certificate status and workflow logs cannot be verified from this checkout.
+Do not change DNS, nameservers, repository settings or publishing configuration as part of a content edit. The canonical URL, Open Graph URLs, JSON-LD, `robots.txt`, `sitemap.xml` and CNAME use the existing custom domain. GitHub settings, DNS, certificates and live deployment status require checking in GitHub or at the domain provider.
 
-For a repository-based URL such as `https://OWNER.github.io/WebSite/`, keep homepage resources relative to the document. The 404 page sets `/WebSite/` as its base on GitHub Pages project URLs because Pages serves it at the missing request URL. If the repository name changes, update this base path in `404.html`. If changing the public deployment URL, update the canonical URL, Open Graph and JSON-LD values, `robots.txt`, and `sitemap.xml` as appropriate. The 404 page's home link returns to the configured custom domain.
+## Content and maintenance conventions
 
-## Content and asset conventions
-
-- Edit page copy and structured data in `index.html`; keep structured data factual and consistent with visible content.
-- Keep shared styles and design tokens in `css/styles.css`; put responsive breakpoint rules in `css/responsive.css`.
-- Keep JavaScript small, dependency-free and optional for core content and navigation.
-- Preserve the supplied artwork in `assets/logos/`; use dark wordmarks on light surfaces and the light wordmark in the footer.
-- `assets/images/fidan-abdiu-profile.jpg` is the current web portrait. Provide intrinsic dimensions, eager-load the hero image and lazy-load the below-fold portrait.
-- Do not add unverified clients, outcomes, credentials, availability or contact details. Generalize confidential project information.
-- If an approved public CV PDF is later supplied, place it at `assets/documents/fidan-abdiu-cv.pdf` (create the directory then) and update the request links deliberately. Do not publish LaTeX or other private source material.
-
-## Known limits
-
-- The site has no backend, contact form, analytics, service worker or automated test suite.
-- There is no CV PDF in the repository.
-- This checkout cannot establish the cause of a GitHub Actions notification or validate the live Pages configuration; use the GitHub run logs and Pages settings for those checks.
+- Keep public facts grounded in the existing site, professional CV or details supplied by Fidan. Generalize confidential work and do not imply sole ownership of collaborative projects.
+- Page titles, descriptions, social text and canonical URLs are unique on service pages; see [SEO](docs/seo.md).
+- Use local assets and relative page links. Preserve supplied logo artwork and proportions; do not recolor or stretch it.
+- The homepage and service pages use repeated static header/footer markup; update all page navigation consistently when changing it.
+- The contact inquiry form opens an email draft only. Do not add a success claim or imply server submission unless an actual supported service is implemented and documented.
+- If a public CV PDF is later supplied, place it at `assets/documents/fidan-abdiu-cv.pdf` and update the email-request links deliberately. Do not publish source material.
